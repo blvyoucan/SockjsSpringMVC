@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-4.2.xsd
+	   http://www.springframework.org/schema/task
+	   http://www.springframework.org/schema/task/spring-task-4.2.xsd ">
+ <!-- 
+	<import resource="classpath:dao.xml"/>
+ -->
+	<mvc:annotation-driven/>
+	
+	<context:component-scan base-package="com.sucsoft.fivewater2.socket.config" />
+	<context:component-scan base-package="com.sucsoft.fivewater2.controller" />
+	
+	<mvc:resources location="/" mapping="/**" />
+    
+	<!-- 因为Jsp目录改变，所以重新配置下 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	
+	<!-- 
+	<task:annotation-driven executor="myExecutor" scheduler="myScheduler" />
+	<task:executor id="myExecutor" pool-size="5" />
+	<task:scheduler id="myScheduler" pool-size="10" />
+	
+	<mvc:annotation-driven>
+ 		<mvc:message-converters>
+ 			<bean class = "org.springframework.http.converter.StringHttpMessageConverter">
+	            <property name="supportedMediaTypes" value="application/json; charset=GBK" />
+	        </bean>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes" value="application/json; charset=GBK"/>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean id="loginInterceptor" class="phoenix.web.base.web.LoginInterceptor">
+				<property name="allowUrls">
+					<list>
+						<!- - 如果请求中包含以下路径，则不进行拦截 - ->
+						<value>/css</value>
+						<value>/js</value>
+						<value>/img</value>
+						<value>/partial</value>
+						<value>/plugin</value>
+						<value>/script</value>
+						<value>/login</value>
+						<value>/rest</value>
+						<value>/dcEntitySetType/list</value>
+						<value>/dcEntitySet/list</value>
+					</list>
+				</property>
+			</bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
+	<!- - 因为Jsp目录改变，所以重新配置下 - ->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	 
+    <!- - spring支持文件上传 - ->
+    <bean id="multipartResolver"
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8" />
+        <property name="maxUploadSize" value="10485760000" />
+        <property name="maxInMemorySize" value="40960" />
+    </bean>
+    
+	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/js/**" location="/js/" />
+	<mvc:resources mapping="/partial/**" location="/partial/" />
+	<mvc:resources mapping="/plugin/**" location="/plugin/" />
+	<mvc:resources mapping="/script/**" location="/script/" />
+	<mvc:resources mapping="/app.html" location="/app.html" />
+	 -->
+</beans>
